@@ -1,0 +1,21 @@
+﻿Movie Name,Length(mins),Genre,Genre 2,Rating,Class
+Social Network,120,Biography,Drama,83,1
+Whiplash,106,Music,Drama,94,1
+Batman Begins,140,Action,Adventure,84,1
+The Dark Night,152,Action,Adventure,94,1
+Hush,82,Thriller,Mystery,93,1
+Enemy,90,Mystery,Thriller,71,0
+The Wolf of Wall Street,180,Biography,Comedy,79,1
+The Notebook,124,Romance,Drama,53,0
+Black Panther,134,Action,Adventure,96,0
+Fight Club,139,Mystery,Thriller,79,0
+Predestination,97,Sci-Fi,Mystery,84,1
+Old boy,104,Mystery,Thriller,39,0
+The Breakfast Club,97,Comedy,Drama,89,0
+La La Land,128,Musical,Romance,91,1
+Avatar,162,Sci-Fi,Action,82,1
+Avengers: Endgame,182,Adventure,Sci-Fi,94,1
+Divergent,140,Sci-Fi,Action,41,0
+Charlie and the Chocolate Factory,100,Kids and Family,Comedy,83,0
+Eternals,156,Action,Adventure,47,0
+Robocop 4,104,Sci-Fi,Action,48,0
