@@ -78,7 +78,20 @@ def KNNfunc(rating,genreNumber,movie):
     prob = neigh.predict_proba([testcase])
     print("The probabily of liking",movie,"is",round(prob[0,1],2))
     print("\n")
-    
+
+genreDict = {
+    "Action": 0,
+    "Adventure": 10,
+    "Thriller": 20,
+    "Mystery": 30,
+    "Sci-Fi": 40,
+    "Kids and Family": 50,
+    "Comedy": 60,
+    "Romance": 70,
+    "Music": 80,
+    "Musical": 90,
+    "Biography": 100
+    }
 n = 3
 
 KNNfunc(75, 70,"Grease")
