@@ -40,8 +40,6 @@ for i in range(len(genre)):
         genre_num.append(100)
 df["genreNum"] = genre_num
 
-# genreNum dictionary
-
 # 2D plot of the data
 def coloring(C):
     if(C==1):
@@ -64,7 +62,6 @@ X = X.drop("Genre 2", axis = 1)
 X = X.drop("color", axis = 1)
 
 Y = df["Class"]
-n = 3
 
 def KNNfunc(rating,genreNumber,movie):
     neigh = KNeighborsClassifier(n_neighbors = n)
@@ -79,6 +76,7 @@ def KNNfunc(rating,genreNumber,movie):
     prob = neigh.predict_proba([testcase])
     print("The probabily of liking",movie,"is",round(prob[0,1],2))
 
+# genreNum dictionary
 genreDict = {
     "Action": 0,
     "Adventure": 10,
