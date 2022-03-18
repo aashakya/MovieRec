@@ -80,7 +80,7 @@ def KNNfunc(rating,genreNumber,movie):
     print("The probabily of liking",movie,"is",round(prob[0,1],2))
 
 def failed():
-    print("Sorry Program error. The programmed genres are limited or could not find the movie")
+    print("Sorry Program error: The programmed genres are limited or could not find the movie")
 
 genreDict = {
     "Action": 0,
@@ -112,14 +112,18 @@ n = 3
 #getting the movie input
 movieName = input("Enter movie Name:")
 
-#scraping the movie data
-movie_scraper = MovieScraper(movie_title=movieName)
-movie_scraper.extract_metadata()
+#exception handling if movie is not found
+try:
+    #scraping the movie data
+    movie_scraper = MovieScraper(movie_title=movieName)
+    movie_scraper.extract_metadata()
 
-movieRating = int(movie_scraper.metadata["Score_Rotten"])
-movieGenre = movie_scraper.metadata["Genre"]
+    movieRating = int(movie_scraper.metadata["Score_Rotten"])
+    movieGenre = movie_scraper.metadata["Genre"]
 
-genreNumberTotal = genreSum(movieGenre)
+    genreNumberTotal = genreSum(movieGenre)
 
-if (genreNumberTotal != -1):
-   KNNfunc(movieRating, genreNumberTotal, movieName)
+    if (genreNumberTotal != -1):
+        KNNfunc(movieRating, genreNumberTotal, movieName)
+except:
+    failed()
