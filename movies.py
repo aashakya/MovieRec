@@ -107,12 +107,15 @@ def genreSum(movieGenre):
         
 n = 3
 #getting the movie input
-movieName = input("Enter movie Name:")
-
+movieName = input("Enter movie Name or the Rotten Tomato link for the movie:")
+print("\n")
 #exception handling if movie is not found
 try:
     #scraping the movie data
-    movie_scraper = MovieScraper(movie_title=movieName)
+    if movieName.startswith("http"):
+        movie_scraper = MovieScraper(movie_url=movieName)
+    else:
+        movie_scraper = MovieScraper(movie_title=movieName)
     movie_scraper.extract_metadata()
 
     movieRating = int(movie_scraper.metadata["Score_Rotten"])
