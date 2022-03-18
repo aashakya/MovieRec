@@ -79,9 +79,6 @@ def KNNfunc(rating,genreNumber,movie):
     prob = neigh.predict_proba([testcase])
     print("The probabily of liking",movie,"is",round(prob[0,1],2))
 
-def failed():
-    print("Sorry Program error: The programmed genres are limited or could not find the movie")
-
 genreDict = {
     "Action": 0,
     "Adventure": 10,
@@ -103,7 +100,7 @@ def genreSum(movieGenre):
             sumGenreNum += genreDict[i]
             totalGenre +=1
     if (totalGenre == 0):
-        failed()
+        print("The programmed genres are limited so could not match up with the genre")
         return -1
     else:
         return sumGenreNum
@@ -126,4 +123,4 @@ try:
     if (genreNumberTotal != -1):
         KNNfunc(movieRating, genreNumberTotal, movieName)
 except:
-    failed()
+    print("Movie not found. Try typing the exact case of the movie")
