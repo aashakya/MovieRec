@@ -6,12 +6,12 @@ rotten-tomatoes-scraper from PyPi. I used the pandas library and the sklearn
 library to implement the algorithm. I also used the bokeh library to create a
 2-D scatter plot of the movies I have viewed in the past.
 
-##Libraries used
+## Libraries used
 pandas
 sklearn
 bokeh
 rotten-tomatoes-scraper
 
-##Further plans for the project
+## Further plans for the project
 Webscrape without using the rotten-tomatoes-scraper tool
 Clean up the code with more use of functions
