@@ -9,6 +9,7 @@ import pandas as pd
 from sklearn.neighbors import KNeighborsClassifier
 from bokeh.plotting import figure
 from bokeh.io import output_file, show
+from rotten_tomatoes_scraper.rt_scraper import MovieScraper
 
 df = pd.read_csv("movie_list.csv")
 #adding a numerical genre column
@@ -52,7 +53,7 @@ df["color"]=df['Class'].apply(coloring)
 p = figure(x_axis_label='GenreNum', y_axis_label='Rating')
 p.circle(df['genreNum'],df['Rating'],color=df['color'],size=5)
 output_file('plot.html')
-show(p)
+#show(p)
 
 # KNN decision system
 X = df.drop("Class", axis = 1)
@@ -77,7 +78,9 @@ def KNNfunc(rating,genreNumber,movie):
         print('Recommended to watch')
     prob = neigh.predict_proba([testcase])
     print("The probabily of liking",movie,"is",round(prob[0,1],2))
-    print("\n")
+
+def failed():
+    print("Sorry Program error. The programmed genres are limited or could not find the movie")
 
 genreDict = {
     "Action": 0,
@@ -92,10 +95,31 @@ genreDict = {
     "Musical": 90,
     "Biography": 100
     }
+def genreSum(movieGenre):
+    sumGenreNum = 0;
+    totalGenre = 0;
+    for i in movieGenre:
+        if i in genreDict:
+            sumGenreNum += genreDict[i]
+            totalGenre +=1
+    if (totalGenre == 0):
+        failed()
+        return -1
+    else:
+        return sumGenreNum
+        
 n = 3
+#getting the movie input
+movieName = input("Enter movie Name:")
 
-KNNfunc(75, 70,"Grease")
-KNNfunc(99, 40, "Finding Nemo")
-KNNfunc(89, 70, "Titanic")
-KNNfunc(98, 0, "Jaws")
-KNNfunc(78, 50, "Rudy")
+#scraping the movie data
+movie_scraper = MovieScraper(movie_title=movieName)
+movie_scraper.extract_metadata()
+
+movieRating = int(movie_scraper.metadata["Score_Rotten"])
+movieGenre = movie_scraper.metadata["Genre"]
+
+genreNumberTotal = genreSum(movieGenre)
+
+if (genreNumberTotal != -1):
+   KNNfunc(movieRating, genreNumberTotal, movieName)
